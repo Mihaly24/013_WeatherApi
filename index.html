@@ -66,5 +66,21 @@
             </div>
         <p id="error"></p>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $("#cekButton").on("click", function() {
+            const lokasi = $("#inputLokasi").val();
+            
+            if (!lokasi) {
+                $("#error").text("Nama kecamatan tidak boleh kosong!");
+                return;
+            }
+
+            const apiKey = "94d5a770491048f794940350250610";
+            const urlApi = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lokasi}&aqi=no`;
+        });
+    </script>
     </body>
 </html>
