@@ -87,6 +87,7 @@
                 success: function(data) {
                     console.log(data);
                     $("#hasilCuaca").html("");
+                    $("#error").text("");
 
                     const negara = data.location.country;
                     const provinsi = data.location.region;
@@ -108,6 +109,11 @@
                     `;
                     
                     $("#hasilCuaca").html(hasilHTML);
+                },
+                error: function(err) {
+                    console.log(err);
+                    $("#hasilCuaca").html("");
+                    $("#error").text("Lokasi tidak ditemukan. Mohon coba lagi.");
                 }
             });
         });
