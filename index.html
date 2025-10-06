@@ -80,6 +80,36 @@
 
             const apiKey = "94d5a770491048f794940350250610";
             const urlApi = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lokasi}&aqi=no`;
+
+            $.ajax({
+                url: urlApi,
+                method: "GET",
+                success: function(data) {
+                    console.log(data);
+                    $("#hasilCuaca").html("");
+
+                    const negara = data.location.country;
+                    const provinsi = data.location.region;
+                    const kecamatan = data.location.name;
+                    const suhu = data.current.temp_c;
+                    const kelembapan = data.current.humidity;
+                    const longitude = data.location.lon;
+                    const latitude = data.location.lat;
+
+                    const hasilHTML = `
+                        <p><strong>Negara:</strong> ${negara}</p>
+                        <p><strong>Provinsi:</strong> ${provinsi}</p>
+                        <p><strong>Kecamatan/Kota:</strong> ${kecamatan}</p>
+                        <hr>
+                        <p><strong>Suhu:</strong> ${suhu} °C</p>
+                        <p><strong>Kelembapan:</strong> ${kelembapan} %</p>
+                        <p><strong>Longitude:</strong> ${longitude}</p>
+                        <p><strong>Latitude:</strong> ${latitude}</p>
+                    `;
+                    
+                    $("#hasilCuaca").html(hasilHTML);
+                }
+            });
         });
     </script>
     </body>
