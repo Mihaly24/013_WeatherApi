@@ -96,12 +96,19 @@
                     const kelembapan = data.current.humidity;
                     const longitude = data.location.lon;
                     const latitude = data.location.lat;
+                    const kondisiTeks = data.current.condition.text;
+                    const kondisiIkon = data.current.condition.icon;
 
                     const hasilHTML = `
                         <p><strong>Negara:</strong> ${negara}</p>
                         <p><strong>Provinsi:</strong> ${provinsi}</p>
                         <p><strong>Kecamatan/Kota:</strong> ${kecamatan}</p>
                         <hr>
+                        <div class="kondisi">
+                            <img src="${kondisiIkon}" alt="Ikon Cuaca">
+                            <p>${kondisiTeks}</p>
+                        </div>
+
                         <p><strong>Suhu:</strong> ${suhu} °C</p>
                         <p><strong>Kelembapan:</strong> ${kelembapan} %</p>
                         <p><strong>Longitude:</strong> ${longitude}</p>
